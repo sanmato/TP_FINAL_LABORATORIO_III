@@ -1,16 +1,18 @@
 LA IDEA DEL PROYECTO:
 
-EL RESTAURANT "THE SORDIDE" NOS CONTRATA PARA REALIZAR UN SISTEMA DE RESERVA DE MESAS EN SU LOCAL.
-EL SISTEMA CONSISTE EN LOGUEARNOS COMO USUARIOS Y REALIZAR NUESTRA RESERVA CON LOS PEDIDOS DE LO QUE CADA COMENSAL VA A ORDENAR Y AL FINALIZAR
-EL PEDIDO, SE OTORGARÁ UN NUMERO DE ORDEN.
+El Restaurant "THE SORDIDE" nos contrata para realizar un sistema de reservas de mesas.
 
-CUANDO EL CLIENTE CONCURRE AL LOCAL, INFORMARÁ ESE NUMERO DE ORDEN DE MANERA QUE RECEPCIÓN YA SEPA LA MESA ASIGNADA Y LA CANTIDAD DE PERSONAS.
-Y EL MOZO YA SEPA LO QUE SE VA A CONSUMIR.
+Como requerimientos principales nos solicitaron:
 
-O NO QUE ESTA RE PIOLA?
-
-CASOS DE USO:
-GESTION DE USUARIOS
-GENERAR PEDIDO(MESA, COMIDA)
-VALIDACIÓN DE TOLERANCIA
-PERSONAL ASIGNADO
+El sistema debera permitir gestionar mesas (ABM) (ROL administrador).
+    Cada mesa tendra una capacidad de limite.
+El sistema debera permitir a los usuarios poder reservar mesas.
+El sistema debera verificar la disponibilidad de las mesas y permitir realizar la reserva si hay mesas disponibles.
+El sistema debera permitir consultar por mesas disponibles en el momento (opcional).
+El sistema debera asignar las mesas de acuerdo a la capacidad solicitada.
+El sistema debera contener un sistema de autenticación para usuarios (administrador y cliente).
+El sistema debera permitir a los clientes poder registrarse y loguear.
+El sistema debera permitir a los usuarios poder cargar su orden dentro de la misma reserva (si lo desean).
+El sistema debera permitir a los administradores poder cargar mesas y menues.
+El sistema debera permitir a los usuarios poder visualizar el pedido realizado.
+El sistema debera permitir a los administradores poder consultar un listado total de las reservas.
