@@ -1,8 +1,11 @@
-LA IDEA DEL PROYECTO:
+LA IDEA DEL PROYECTO (Un poco de narrativa):
 
-El Restaurant "THE SORDIDE" nos contrata para realizar un sistema de reservas de mesas.
+El Restaurant "THE SORDIDE" nos contrata para realizar un sistema de reservas de mesas. La idea es poder realizar la reserva a través del mismo
+sistema, ademas de que si lo desea, el cliente pueda cargar los datos de los platos que va a querer comer.
+Esto se va a hacer mediante un sistema de usuarios, donde una vez dentro tendrá la posibilidad de cargar una reserva.
+El administrador del sistema podrá cargar el menu (platos) y ver las ordenes de cada reserva realizada.
 
-Como requerimientos principales nos solicitaron:
+Como requerimientos principales tenemos:
 
 El sistema debera permitir gestionar mesas (ABM) (ROL administrador).
     Cada mesa tendra una capacidad de limite.
