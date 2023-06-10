@@ -1,3 +1,5 @@
+package Clases;
+
 import java.util.ArrayList;
 
 public class Menu {
@@ -17,16 +19,16 @@ public class Menu {
     }
 
     public void eliminarItem(String nombreItem) throws Exception {
-       try {
-           for (MenuItem item : items) {
-               if (item.getNombre().equals(nombreItem)) {
-                   items.remove(item);
-                   break;
-               }
-           }
-       }catch (Exception exception){
-           System.out.println("Error: no se encontro el item para eliminar");
-       }
+        try {
+            for (MenuItem item : items) {
+                if (item.getNombre().equals(nombreItem)) {
+                    items.remove(item);
+                    break;
+                }
+            }
+        } catch (Exception exception) {
+            System.out.println("Error: no se encontro el item para eliminar");
+        }
     }
 
     public void agregarItem(MenuItem item) {
@@ -37,15 +39,16 @@ public class Menu {
         System.out.println(" -------------- Menú -------------- ");
         for (MenuItem item : items) {
             if (item.isDisponible())
-            System.out.println("| " +"- " + item.getNombre() + " - $ " + item.getPrecio() + " | ");
+                System.out.println("| " + "- " + item.getNombre() + " - $ " + item.getPrecio() + " | ");
         }
     }
 
     public void mostrarMenuTodos() {
         System.out.println(" -------------- Menú -------------- ");
         for (MenuItem item : items) {
-                System.out.println("| " +"- " + item.getNombre() + " - $ " + item.getPrecio() + " | " + " Disponivilidad " + item.isDisponible());
+            System.out.println("| " + "- " + item.getNombre() + " - $ " + item.getPrecio() + " | " + " Disponivilidad "
+                    + item.isDisponible());
         }
     }
-    
+
 }

@@ -1,15 +1,17 @@
+package Clases;
+
 import java.util.ArrayList;
 
 public class Orden {
     private ArrayList<MenuItem> items;
 
-    //region CONST
+    // region CONST
     public Orden() {
-        this.items= new ArrayList<MenuItem>();
+        this.items = new ArrayList<MenuItem>();
     }
-    //endregion
+    // endregion
 
-    //region GYS
+    // region GYS
     public ArrayList<MenuItem> getItems() {
         return items;
     }
@@ -17,8 +19,7 @@ public class Orden {
     public void setItems(ArrayList<MenuItem> items) {
         this.items = items;
     }
-    //endregion
-
+    // endregion
 
     @Override
     public String toString() {

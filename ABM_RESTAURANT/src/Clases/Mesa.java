@@ -1,10 +1,12 @@
+package Clases;
+
 public class Mesa {
     private Integer numMesa;
     private Integer paraCuantos;
     private Situacion situacion;
     private boolean ocupada;
 
-    //region CONST
+    // region CONST
     public Mesa() {
     }
 
@@ -14,8 +16,9 @@ public class Mesa {
         this.situacion = situacion;
         this.ocupada = ocupada;
     }
-    //endregion
-    //region GYS
+
+    // endregion
+    // region GYS
     public Integer getNumMesa() {
         return numMesa;
     }
@@ -47,8 +50,7 @@ public class Mesa {
     public void setOcupada(boolean ocupada) {
         this.ocupada = ocupada;
     }
-    //endregion
-
+    // endregion
 
     @Override
     public String toString() {

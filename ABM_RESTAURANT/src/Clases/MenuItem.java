@@ -1,3 +1,5 @@
+package Clases;
+
 import java.util.Objects;
 
 public class MenuItem {
@@ -40,8 +42,10 @@ public class MenuItem {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         MenuItem menuItem = (MenuItem) o;
         return Double.compare(menuItem.precio, precio) == 0 && nombre.equals(menuItem.nombre);
     }
@@ -51,5 +55,3 @@ public class MenuItem {
         return Objects.hash(nombre, precio);
     }
 }
-
-

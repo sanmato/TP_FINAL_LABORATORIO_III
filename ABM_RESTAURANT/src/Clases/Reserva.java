@@ -1,10 +1,12 @@
+package Clases;
+
 public class Reserva {
     private Integer id;
     private Usuario usuario;
     private Mesa mesa;
     private Orden orden;
 
-    //region CONST
+    // region CONST
     public Reserva() {
     }
 
@@ -14,8 +16,9 @@ public class Reserva {
         this.mesa = mesa;
         this.orden = orden;
     }
-    //endregion
-    //region GYS
+
+    // endregion
+    // region GYS
     public Integer getId() {
         return id;
     }
@@ -47,8 +50,7 @@ public class Reserva {
     public void setOrden(Orden orden) {
         this.orden = orden;
     }
-    //endregion
-
+    // endregion
 
     @Override
     public String toString() {
