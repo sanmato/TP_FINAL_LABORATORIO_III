@@ -1,48 +1,64 @@
 package Clases;
 
 public class Usuario {
-    private String id;
-    private String nombre;
-    private String apellido;
-    private String contrasenia;
+    private int id;
+    private String nombreUsuario;
+    private String nombre_apellido;
+    private String password;
+    private String email;
     private boolean esAdmin;
+    private static int nextId = 1;
 
-    public Usuario(String id, String nombre, String apellido, String contrasenia, boolean esAdmin) {
+    public Usuario(String nombreUsuario, String nombre_apellido, String password, String email) {
+        this.id = nextId++;
+        this.nombreUsuario = nombreUsuario;
+        this.nombre_apellido = nombre_apellido;
+        this.password = password;
+        this.email = email;
+        this.esAdmin = false;
     }
 
     public Usuario() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getNombre_apellido() {
+        return nombre_apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNombre_apellido(String nombre_apellido) {
+        this.nombre_apellido = nombre_apellido;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isEsAdmin() {
@@ -53,10 +69,42 @@ public class Usuario {
         this.esAdmin = esAdmin;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", contrasenia=" + contrasenia
-                + ", esAdmin=" + esAdmin + "]";
+    public static int getNextId() {
+        return nextId;
     }
 
+    public static void setNextId(int nextId) {
+        Usuario.nextId = nextId;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido=" + nombre_apellido
+                + ", password=" + password + ", email=" + email + ", esAdmin=" + esAdmin + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
+        result = prime * result + ((nombre_apellido == null) ? 0 : nombre_apellido.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + (esAdmin ? 1231 : 1237);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Usuario otrUsuario = (Usuario) obj;
+        return nombreUsuario.equals(otrUsuario.nombreUsuario);
+    }
 }

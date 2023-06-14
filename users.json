@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nombreUsuario": "sanmato",
+    "nombre_apellido": "Santiago Mato",
+    "password": "santiago@@1234",
+    "email": "santiago@mail.com",
+    "esAdmin": false
+  },
+  {
+    "id": 1,
+    "nombreUsuario": "santi368",
+    "nombre_apellido": "Santiago Manuel",
+    "password": "1234",
+    "email": "santiago@mail.com.ar",
+    "esAdmin": false
+  }
+]

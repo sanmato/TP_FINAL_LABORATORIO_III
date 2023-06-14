@@ -15,8 +15,8 @@ public class Cliente extends Usuario {
         super();
     }
 
-    public Cliente(String id, String nombre, String apellido, String contrasenia, boolean esAdmin, Reserva reserva) {
-        super(id, nombre, apellido, contrasenia, esAdmin);
+    public Cliente(String nombreUsuario, String nombre_apellido, String password, String email) {
+        super(nombreUsuario, nombre_apellido, password, email);
         this.reserva = reserva;
     }
 
@@ -46,8 +46,9 @@ public class Cliente extends Usuario {
 
     public void verCliente(Usuario usuario) {
         System.out.println("Id: " + usuario.getId());
-        System.out.println("Nombre/s: " + usuario.getNombre());
-        System.out.println("Apellido/s: " + usuario.getApellido());
+        System.out.println("Usuario: " + usuario.getNombreUsuario());
+        System.out.println("Nombre/s: " + usuario.getNombre_apellido());
+        System.out.println("Email: " + usuario.getEmail());
     }
 
     // endregion
@@ -68,14 +69,17 @@ public class Cliente extends Usuario {
         Scanner scan = new Scanner(System.in);
         Cliente c = new Cliente();
 
-        System.out.printf("Ingrese Nombre/es: ");
-        c.setNombre(scan.nextLine());
+        System.out.printf("Ingrese Nombre de Usuario: ");
+        c.setNombreUsuario(scan.nextLine());
 
-        System.out.printf("Ingrese Apellido/s: ");
-        c.setApellido(scan.nextLine());
+        System.out.printf("Ingrese Nombre Completo: ");
+        c.setNombre_apellido(scan.nextLine());
 
-        System.out.printf("Ingrese Contrasenia: ");
-        c.setContrasenia(scan.nextLine());
+        System.out.printf("Ingrese Password: ");
+        c.setPassword(scan.nextLine());
+
+        System.out.printf("Ingrese Email: ");
+        c.setEmail(scan.nextLine());
 
         String adminOClient = "x";
         boolean flag = false;
@@ -92,7 +96,6 @@ public class Cliente extends Usuario {
         } else {
             c.setEsAdmin(false);
         }
-        c.setId(generarIdRandomString(10));
         return c;
     }
     // endregion
