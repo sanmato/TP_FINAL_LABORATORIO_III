@@ -3,7 +3,7 @@ package Clases;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Gestores.Autenticador;
+import Gestores.GestorUsuarios;
 
 public class Sistema {
     private ArrayList<Mesa> mesas;
@@ -43,9 +43,9 @@ public class Sistema {
         System.out.println("Ingrese password: ");
         String pass = scanner.nextLine();
 
-        Autenticador autenticador = new Autenticador();
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
 
-        autenticador.login(nombreDeUsuario, pass);
+        gestorUsuarios.login(nombreDeUsuario, pass);
 
     }
 }
