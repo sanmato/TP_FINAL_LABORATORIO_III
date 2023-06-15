@@ -57,6 +57,9 @@ public class GestorUsuarios {
         return false;
     }
 
+
+
+
     private boolean nombreUsuarioExiste(String username) {
         List<Usuario> usuariosCreados = GestorJSON.leerJson();
 

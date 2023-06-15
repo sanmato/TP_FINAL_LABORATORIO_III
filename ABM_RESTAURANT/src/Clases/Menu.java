@@ -1,6 +1,7 @@
 package Clases;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu {
     private ArrayList<MenuItem> items;
@@ -17,6 +18,25 @@ public class Menu {
         }
         return null;
     }
+    public void modificarPrecio(MenuItem item){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese nuevo precio: ");
+        Double nuevoPrecio= scanner.nextDouble();
+        item.setPrecio(nuevoPrecio);
+    }
+    public void modificarNombre(MenuItem item){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese nuevo nombre: ");
+        String nuevoNombre= scanner.next();
+        item.setNombre(nuevoNombre);
+    }
+    public void modificarDisponivilidad(MenuItem item){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Disponibilidad: ");
+        Boolean nuevoNombre= scanner.nextBoolean();
+        item.setDisponible(nuevoNombre);
+    }
+
 
     public void eliminarItem(String nombreItem) throws Exception {
         try {
