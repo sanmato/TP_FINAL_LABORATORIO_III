@@ -46,8 +46,8 @@ public class Cliente extends Usuario {
 
     public void verCliente(Usuario usuario) {
         System.out.println("Id: " + usuario.getId());
-        System.out.println("Usuario: " + usuario.getNombreUsuario());
-        System.out.println("Nombre/s: " + usuario.getNombre_apellido());
+        System.out.println("Nombre de Usuario: " + usuario.getNombreUsuario());
+        System.out.println("Nombre y Apellido: " + usuario.getNombre_apellido());
         System.out.println("Email: " + usuario.getEmail());
     }
 
@@ -81,21 +81,6 @@ public class Cliente extends Usuario {
         System.out.printf("Ingrese Email: ");
         c.setEmail(scan.nextLine());
 
-        String adminOClient = "x";
-        boolean flag = false;
-        do {
-            System.out.printf("¿Es Administrador? S/N");
-            adminOClient = scan.nextLine();
-            if (adminOClient == "s" || adminOClient == "S" || adminOClient == "n" || adminOClient == "N") {
-                flag = true;
-            }
-        } while (flag == true);
-
-        if (adminOClient == "s" || adminOClient != "S") {
-            c.setEsAdmin(true);
-        } else {
-            c.setEsAdmin(false);
-        }
         return c;
     }
     // endregion
