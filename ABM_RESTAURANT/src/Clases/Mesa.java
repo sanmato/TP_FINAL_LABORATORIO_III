@@ -4,17 +4,15 @@ public class Mesa {
     private Integer numMesa;
     private Integer paraCuantos;
     private Situacion situacion;
-    private boolean ocupada;
 
     // region CONST
     public Mesa() {
     }
 
-    public Mesa(Integer numMesa, Integer paraCuantos, Situacion situacion, boolean ocupada) {
+    public Mesa(Integer numMesa, Integer paraCuantos, Situacion situacion) {
         this.numMesa = numMesa;
         this.paraCuantos = paraCuantos;
         this.situacion = situacion;
-        this.ocupada = ocupada;
     }
 
     // endregion
@@ -43,14 +41,7 @@ public class Mesa {
         this.situacion = situacion;
     }
 
-    public boolean isOcupada() {
-        return ocupada;
-    }
 
-    public void setOcupada(boolean ocupada) {
-        this.ocupada = ocupada;
-    }
-    // endregion
 
     @Override
     public String toString() {
@@ -58,7 +49,6 @@ public class Mesa {
                 "numMesa=" + numMesa +
                 ", paraCuantos=" + paraCuantos +
                 ", situacion=" + situacion +
-                ", ocupada=" + ocupada +
                 '}';
     }
 }

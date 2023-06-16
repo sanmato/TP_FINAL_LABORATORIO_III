@@ -40,6 +40,8 @@ public class MenuItem {
         this.disponible = disponible;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
