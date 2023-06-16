@@ -1,54 +1,50 @@
 package Clases;
 
 public class Mesa {
-    private Integer numMesa;
-    private Integer paraCuantos;
-    private Situacion situacion;
+    private Integer numeroMesa;
+    private Integer capacidad;
+    private Boolean reservada;
 
     // region CONST
     public Mesa() {
     }
 
-    public Mesa(Integer numMesa, Integer paraCuantos, Situacion situacion) {
-        this.numMesa = numMesa;
-        this.paraCuantos = paraCuantos;
-        this.situacion = situacion;
+    public Mesa(Integer numeroMesa, Integer capacidad) {
+        this.numeroMesa = numeroMesa;
+        this.capacidad = capacidad;
+        this.reservada = false;
+    }
+
+    public Integer getNumeroMesa() {
+        return numeroMesa;
+    }
+
+    public void setNumeroMesa(Integer numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
+
+    public Integer getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(Integer capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Boolean getReservada() {
+        return reservada;
+    }
+
+    public void setReservada(Boolean reservada) {
+        this.reservada = reservada;
+    }
+
+    @Override
+    public String toString() {
+        return "Numero: " + numeroMesa + ". Capacidad para " + capacidad + " personas.";
     }
 
     // endregion
     // region GYS
-    public Integer getNumMesa() {
-        return numMesa;
-    }
 
-    public void setNumMesa(Integer numMesa) {
-        this.numMesa = numMesa;
-    }
-
-    public Integer getParaCuantos() {
-        return paraCuantos;
-    }
-
-    public void setParaCuantos(Integer paraCuantos) {
-        this.paraCuantos = paraCuantos;
-    }
-
-    public Situacion getSituacion() {
-        return situacion;
-    }
-
-    public void setSituacion(Situacion situacion) {
-        this.situacion = situacion;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Mesa{" +
-                "numMesa=" + numMesa +
-                ", paraCuantos=" + paraCuantos +
-                ", situacion=" + situacion +
-                '}';
-    }
 }

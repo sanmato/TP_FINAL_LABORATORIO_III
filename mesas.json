@@ -1,0 +1,17 @@
+[
+  {
+    "numeroMesa": 29,
+    "capacidad": 6,
+    "reservada": false
+  },
+  {
+    "numeroMesa": 28,
+    "capacidad": 7,
+    "reservada": true
+  },
+  {
+    "numeroMesa": 32,
+    "capacidad": 2,
+    "reservada": false
+  }
+]

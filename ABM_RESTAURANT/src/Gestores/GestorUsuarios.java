@@ -29,9 +29,6 @@ public class GestorUsuarios {
     }
 
     public void registro(String nombreUsuario, String nombre, String password, String email) {
-        //Cliente c = new Cliente();
-        //c.datosManual();
-
         if (nombreUsuarioExiste(nombreUsuario)) {
             System.out.println("El nombre de usuario ya existe. Por favor elija otro.");
         } else {
@@ -59,9 +56,6 @@ public class GestorUsuarios {
         System.out.println("Credenciales inválidas. Por favor, verifique su nombre de usuario y contraseña.");
         return false;
     }
-
-
-
 
     private boolean nombreUsuarioExiste(String username) {
         List<Usuario> usuariosCreados = GestorJSON.leerJson();

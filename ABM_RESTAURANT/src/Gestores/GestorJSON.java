@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,6 +47,60 @@ public class GestorJSON {
         }
 
         return new ArrayList<>();
+    }
+
+    public static void agregarAJsonMesa(Mesa mesaNueva) {
+        List<Mesa> mesasTotales = leerJsonMesa();
+
+        mesasTotales.add(mesaNueva);
+
+        try (FileWriter writer = new FileWriter("mesas.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(mesasTotales, writer);
+        } catch (IOException e) {
+            System.out.println("Error Al escribir el archivo " + e.getMessage());
+        }
+    }
+
+    public static List<Mesa> leerJsonMesa() {
+        File file = new File("mesas.json");
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+        try (Reader reader = new FileReader(file)) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Mesa>>() {
+            }.getType();
+            return gson.fromJson(reader, type);
+        } catch (IOException e) {
+            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
+        }
+
+        return new ArrayList<>();
+
+    }
+
+    public static void borrarMesaDeJSON(int numeroDeMesaABorrar) {
+        List<Mesa> mesasExistentes = leerJsonMesa();
+
+        // Use stream and filter to find the mesa with the given ID
+        Optional<Mesa> optionalMesaABorrar = mesasExistentes.stream()
+                .filter(mesa -> mesa.getNumeroMesa() == numeroDeMesaABorrar)
+                .findFirst();
+
+        if (optionalMesaABorrar.isPresent()) {
+            Mesa mesaABorrar = optionalMesaABorrar.get();
+            mesasExistentes.remove(mesaABorrar);
+
+            try (FileWriter writer = new FileWriter("mesas.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(mesasExistentes, writer);
+            } catch (IOException e) {
+                System.out.println("Error al escribir en el archivo JSON de mesas");
+            }
+        } else {
+            System.out.println("No se encontró una mesa con el ID especificado.");
+        }
     }
 
 }

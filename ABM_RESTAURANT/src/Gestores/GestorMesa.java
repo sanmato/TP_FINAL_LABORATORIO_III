@@ -1,13 +1,6 @@
 package Gestores;
+
 import Clases.Mesa;
-
-import Clases.Situacion;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,73 +11,35 @@ public class GestorMesa {
         this.mesas = new ArrayList<>();
     }
 
-    public void agregarMesas(Mesa mesa) {
-        List<Mesa> mesaList = leerMesa();
-        mesaList.add(mesa);
-        try (FileWriter writer = new FileWriter("mesa.json")) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            gson.toJson(mesaList, writer);
-        } catch (IOException e) {
-            System.out.println("Error Al escribir el archivo " + e.getMessage());
-        }
+    public void agregarNuevaMesa(Integer numeroDeMesa, Integer capacidadMesa) {
+        Mesa nuevaMesa = new Mesa(numeroDeMesa, capacidadMesa);
+
+        mesas.add(nuevaMesa);
+        System.out.println("Mesa: " + nuevaMesa.getNumeroMesa() + " agregada exitosamente");
+        GestorJSON.agregarAJsonMesa(nuevaMesa);
     }
 
-    public List<Mesa> leerMesa() {
-        File file = new File("mesa.json");
-        if (!file.exists()) {
-            return new ArrayList<>();
-        }
-        try (Reader reader = new FileReader(file)) {
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<Mesa>>() {
-            }.getType();
-            return gson.fromJson(reader, type);
-        } catch (IOException e) {
-            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
-        }
-        return new ArrayList<>();
+    public void verMesas() {
+        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
+
+        System.out.println(todasLasMesas);
     }
 
-//    public void eliminarMesa(Mesa m) {
-//        List<Mesa> mesaList = leerMesa();
-//        mesaList.remove(m);
-//        try(FileWriter writer = new FileWriter("mesa.json")){
-//            Gson gson = new GsonBuilder().create();
-//            String jsonString = gson.toJson(m);
-//            writer.append(jsonString);
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-  //  }
-    public boolean verificarMesaDisponible(int numeroMesa) {
-        try {
-            List<Mesa> mesas = leerMesa();
-            for (Mesa mesa : mesas) {
-                if (mesa.getNumMesa() == numeroMesa && mesa.getSituacion() == Situacion.LIBRE) {
-                    return true;
-                }
+    public void verMesasDisponibles() {
+        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
+
+        System.out.println("Mesas disponibles:");
+        todasLasMesas.forEach(mesa -> {
+            if (mesa.getReservada() == false) {
+                System.out.println(mesa.toString());
             }
-        } catch (Exception e) {
-            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
-        }
-        return false;
+        });
     }
 
-    public List<Mesa> consultarMesasDisponibles() {
-        List<Mesa> mesasDisponibles = null;
-        try {
-            List<Mesa> mesas = leerMesa();
-            mesasDisponibles = new ArrayList<>();
+    public void eliminarMesa(int numeroDeMesaABorrar) {
+        GestorJSON.borrarMesaDeJSON(numeroDeMesaABorrar);
 
-            for (Mesa mesa : mesas) {
-                if (mesa.getSituacion() == Situacion.LIBRE) {
-                    mesasDisponibles.add(mesa);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
-        }
-        return mesasDisponibles;
+        System.out.println("Mesa " + numeroDeMesaABorrar + " borrada con exito.");
     }
 
     @Override

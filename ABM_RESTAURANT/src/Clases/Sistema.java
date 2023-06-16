@@ -3,6 +3,7 @@ package Clases;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Gestores.GestorMesa;
 import Gestores.GestorUsuarios;
 
 public class Sistema {
@@ -38,14 +39,18 @@ public class Sistema {
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Ingrese nombre de usuario: ");
-        String nombreDeUsuario = scanner.nextLine();
-        System.out.println("Ingrese password: ");
-        String pass = scanner.nextLine();
+        // System.out.println("Ingrese capacidad de la mesa: ");
+        // int capacidad = scanner.nextInt();
 
-        GestorUsuarios gestorUsuarios = new GestorUsuarios();
+        GestorMesa gestorMesa = new GestorMesa();
 
-        gestorUsuarios.login(nombreDeUsuario, pass);
+        // gestorMesa.agregarNuevaMesa(numeroMesa, capacidad);
+        gestorMesa.verMesas();
+        System.out.println("Ingrese numero de mesa a eliminar: ");
+        int numeroMesa = scanner.nextInt();
+        gestorMesa.eliminarMesa(numeroMesa);
+
+        scanner.close();
 
     }
 }
