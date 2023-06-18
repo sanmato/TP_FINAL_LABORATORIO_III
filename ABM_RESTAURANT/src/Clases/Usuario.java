@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.Scanner;
+
 public class Usuario {
     private int id;
     private String nombreUsuario;
@@ -77,10 +79,29 @@ public class Usuario {
         Usuario.nextId = nextId;
     }
 
+    public Usuario datosManual() {
+        Scanner scan = new Scanner(System.in);
+        Usuario u = new Usuario();
+
+        System.out.printf("Ingrese Nombre de Usuario: ");
+        u.setNombreUsuario(scan.nextLine());
+
+        System.out.printf("Ingrese Nombre Completo: ");
+        u.setNombre_apellido(scan.nextLine());
+
+        System.out.printf("Ingrese Password: ");
+        u.setPassword(scan.nextLine());
+
+        System.out.printf("Ingrese Email: ");
+        u.setEmail(scan.nextLine());
+
+        return u;
+    }
+
     @Override
     public String toString() {
         return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido=" + nombre_apellido
-                + ", password=" + password + ", email=" + email + ", esAdmin=" + esAdmin + "]";
+                 + ", email=" + email + ", esAdmin=" + esAdmin + "]";
     }
 
     @Override
