@@ -65,24 +65,7 @@ public class Cliente extends Usuario {
         return sb.toString();
     }
 
-    public Cliente datosManual() {
-        Scanner scan = new Scanner(System.in);
-        Cliente c = new Cliente();
 
-        System.out.printf("Ingrese Nombre de Usuario: ");
-        c.setNombreUsuario(scan.nextLine());
-
-        System.out.printf("Ingrese Nombre Completo: ");
-        c.setNombre_apellido(scan.nextLine());
-
-        System.out.printf("Ingrese Password: ");
-        c.setPassword(scan.nextLine());
-
-        System.out.printf("Ingrese Email: ");
-        c.setEmail(scan.nextLine());
-
-        return c;
-    }
     // endregion
     // ---------------
 }
