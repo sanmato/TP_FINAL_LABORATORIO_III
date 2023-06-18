@@ -11,6 +11,17 @@ public class GestorMesa {
         this.mesas = new ArrayList<>();
     }
 
+    private Mesa buscarMesaPorNumero(int numeroMesa) {
+        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
+
+        for (Mesa mesaActual : todasLasMesas) {
+            if (mesaActual.getNumeroMesa() == numeroMesa) {
+                return mesaActual;
+            }
+        }
+        return null;
+    }
+
     public void agregarNuevaMesa(Integer numeroDeMesa, Integer capacidadMesa) {
         Mesa nuevaMesa = new Mesa(numeroDeMesa, capacidadMesa);
 
@@ -34,6 +45,18 @@ public class GestorMesa {
                 System.out.println(mesa.toString());
             }
         });
+    }
+
+    public void modificarCapacidadMesa(int numeroDeMesa, int nuevaCapacidad) {
+        Mesa mesaAModificar = buscarMesaPorNumero(numeroDeMesa);
+
+        if (mesaAModificar != null) {
+            mesaAModificar.setCapacidad(nuevaCapacidad);
+            GestorJSON.actualizarJsonMesa(mesaAModificar);
+            System.out.println("Capacidad de la mesa " + numeroDeMesa + " modificada con éxito.");
+        } else {
+            System.out.println("No se encontró una mesa con el número especificado.");
+        }
     }
 
     public void eliminarMesa(int numeroDeMesaABorrar) {

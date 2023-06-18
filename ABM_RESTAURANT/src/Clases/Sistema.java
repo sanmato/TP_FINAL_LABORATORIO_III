@@ -3,6 +3,7 @@ package Clases;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Gestores.GestorMenuItem;
 import Gestores.GestorMesa;
 import Gestores.GestorUsuarios;
 
@@ -39,16 +40,10 @@ public class Sistema {
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
-        // System.out.println("Ingrese capacidad de la mesa: ");
-        // int capacidad = scanner.nextInt();
-
-        GestorMesa gestorMesa = new GestorMesa();
-
-        // gestorMesa.agregarNuevaMesa(numeroMesa, capacidad);
-        gestorMesa.verMesas();
-        System.out.println("Ingrese numero de mesa a eliminar: ");
-        int numeroMesa = scanner.nextInt();
-        gestorMesa.eliminarMesa(numeroMesa);
+        GestorMenuItem menu = new GestorMenuItem();
+        // menu.agregarAlMenu();
+        menu.verMenu();
+        menu.eliminarPlato();
 
         scanner.close();
 

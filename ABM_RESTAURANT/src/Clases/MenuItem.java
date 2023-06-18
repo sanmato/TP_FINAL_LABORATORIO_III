@@ -1,19 +1,37 @@
 package Clases;
 
-import java.util.Objects;
-
 public class MenuItem {
+    private int numeroPlato;
+    private TipoPlato tipo;
     private String nombre;
+    private String descripcion;
     private double precio;
-    private boolean disponible;
+
+    public MenuItem(int numeroPlato, TipoPlato tipo, String nombre, String descripcion, double precio) {
+        this.numeroPlato = numeroPlato;
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
 
     public MenuItem() {
     }
 
-    public MenuItem(String nombre, double precio, boolean disponible) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.disponible = disponible;
+    public int getNumeroPlato() {
+        return numeroPlato;
+    }
+
+    public void setNumeroPlato(int numeroPlato) {
+        this.numeroPlato = numeroPlato;
+    }
+
+    public TipoPlato getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPlato tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -24,6 +42,14 @@ public class MenuItem {
         this.nombre = nombre;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -32,28 +58,14 @@ public class MenuItem {
         this.precio = precio;
     }
 
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        MenuItem menuItem = (MenuItem) o;
-        return Double.compare(menuItem.precio, precio) == 0 && nombre.equals(menuItem.nombre);
+    public String toString() {
+        return "Numero de plato: " + numeroPlato + "\n" +
+                "Tipo: " + tipo + "\n" +
+                "Nombre: " + nombre + "\n" +
+                "Descripción: " + descripcion + "\n" +
+                "Precio: " + precio + "\n" +
+                "\n";
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, precio);
-    }
 }
