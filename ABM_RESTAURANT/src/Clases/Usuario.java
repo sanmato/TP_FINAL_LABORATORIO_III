@@ -1,18 +1,10 @@
 package Clases;
 
-import java.util.Scanner;
-
-import com.google.gson.annotations.Expose;
-
 public class Usuario {
-    @Expose
     private int id;
-    @Expose
     private String nombreUsuario;
-    @Expose
     private String nombre_apellido;
     private String password;
-    @Expose
     private String email;
     private boolean esAdmin;
     private static int nextId = 1;
@@ -85,29 +77,10 @@ public class Usuario {
         Usuario.nextId = nextId;
     }
 
-    public Usuario datosManual() {
-        Scanner scan = new Scanner(System.in);
-        Usuario u = new Usuario();
-
-        System.out.printf("Ingrese Nombre de Usuario: ");
-        u.setNombreUsuario(scan.nextLine());
-
-        System.out.printf("Ingrese Nombre Completo: ");
-        u.setNombre_apellido(scan.nextLine());
-
-        System.out.printf("Ingrese Password: ");
-        u.setPassword(scan.nextLine());
-
-        System.out.printf("Ingrese Email: ");
-        u.setEmail(scan.nextLine());
-
-        return u;
-    }
-
     @Override
     public String toString() {
         return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido=" + nombre_apellido
-                + ", email=" + email + ", esAdmin=" + esAdmin + "]";
+                + ", password=" + password + ", email=" + email + ", esAdmin=" + esAdmin + "]";
     }
 
     @Override

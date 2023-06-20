@@ -1,13 +1,8 @@
 package Clases;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Gestores.GestorMenuItem;
-import Gestores.GestorMesa;
-import Gestores.GestorReserva;
 import Gestores.GestorUsuarios;
 
 public class Sistema {
@@ -43,14 +38,14 @@ public class Sistema {
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
-        GestorReserva gestorReserva = new GestorReserva();
+        System.out.println("Ingrese nombre de usuario: ");
+        String nombreDeUsuario = scanner.nextLine();
+        System.out.println("Ingrese password: ");
+        String pass = scanner.nextLine();
 
-        Usuario usr = new Cliente("santmat", "Santiago Manuel", "123456", "santiago@santiago.com");
-        Usuario usr2 = new Cliente("santm", "Santiago Manuek", "123456", "mail@mail.com");
-        // gestorReserva.agregarReserva(usr, LocalDate.now());
-        gestorReserva.agregarReserva(usr2, LocalDate.now());
+        GestorUsuarios gestorUsuarios = new GestorUsuarios();
 
-        scanner.close();
+        gestorUsuarios.login(nombreDeUsuario, pass);
 
     }
 }

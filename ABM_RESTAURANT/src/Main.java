@@ -1,4 +1,8 @@
-import Clases.Sistema;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Clases.*;
+import Gestores.GestorMesa;
 
 public class Main {
         public static void main(String[] args) throws Exception {
@@ -6,9 +10,8 @@ public class Main {
                 // Sistema sistema = new Sistema();
                 // sistema.run();
 
-                Sistema sistema = new Sistema();
-
-                sistema.run();
+                MenuVisual mv = new MenuVisual();
+                mv.menuPrincipal();
 
         }
 }

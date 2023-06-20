@@ -1,9 +1,9 @@
 package Gestores;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 import Clases.*;
 
@@ -29,6 +29,9 @@ public class GestorUsuarios {
     }
 
     public void registro(String nombreUsuario, String nombre, String password, String email) {
+        //Cliente c = new Cliente();
+        //c.datosManual();
+
         if (nombreUsuarioExiste(nombreUsuario)) {
             System.out.println("El nombre de usuario ya existe. Por favor elija otro.");
         } else {
@@ -57,11 +60,13 @@ public class GestorUsuarios {
         return false;
     }
 
+
+
+
     private boolean nombreUsuarioExiste(String username) {
         List<Usuario> usuariosCreados = GestorJSON.leerJson();
 
         return usuariosCreados.stream()
                 .anyMatch(usuarioActual -> usuarioActual.getNombreUsuario().equals(username));
     }
-
 }

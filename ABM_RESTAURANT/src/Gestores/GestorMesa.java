@@ -1,10 +1,15 @@
 package Gestores;
-
 import Clases.Mesa;
+
+import Clases.Situacion;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 
 public class GestorMesa {
     public ArrayList<Mesa> mesas;
@@ -13,83 +18,73 @@ public class GestorMesa {
         this.mesas = new ArrayList<>();
     }
 
-    private Mesa buscarMesaPorNumero(int numeroMesa) {
-        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
-
-        for (Mesa mesaActual : todasLasMesas) {
-            if (mesaActual.getNumeroMesa() == numeroMesa) {
-                return mesaActual;
-            }
+    public void agregarMesas(Mesa mesa) {
+        List<Mesa> mesaList = leerMesa();
+        mesaList.add(mesa);
+        try (FileWriter writer = new FileWriter("mesa.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(mesaList, writer);
+        } catch (IOException e) {
+            System.out.println("Error Al escribir el archivo " + e.getMessage());
         }
-        return null;
     }
 
-    public Mesa seleccionarMesa(List<Mesa> mesasDisponibles) {
-        mesasDisponibles = obtenerMesasDisponibles();
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Seleccione el número de mesa:");
-        int numeroDeMesa = scanner.nextInt();
-
-        Optional<Mesa> optionalMesa = mesasDisponibles.stream()
-                .filter(mesa -> mesa.getNumeroMesa() == numeroDeMesa)
-                .findFirst();
-
-        if (optionalMesa.isPresent()) {
-            Mesa mesaSeleccionada = optionalMesa.get();
-            mesaSeleccionada.setReservada(true);
-
-            GestorJSON.actualizarJsonMesa(mesaSeleccionada);
-
-            return mesaSeleccionada;
+    public List<Mesa> leerMesa() {
+        File file = new File("mesa.json");
+        if (!file.exists()) {
+            return new ArrayList<>();
         }
-
-        return null;
+        try (Reader reader = new FileReader(file)) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Mesa>>() {
+            }.getType();
+            return gson.fromJson(reader, type);
+        } catch (IOException e) {
+            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
+        }
+        return new ArrayList<>();
     }
 
-    public void agregarNuevaMesa(Integer numeroDeMesa, Integer capacidadMesa) {
-        Mesa nuevaMesa = new Mesa(numeroDeMesa, capacidadMesa);
-
-        mesas.add(nuevaMesa);
-        System.out.println("Mesa: " + nuevaMesa.getNumeroMesa() + " agregada exitosamente");
-        GestorJSON.agregarAJsonMesa(nuevaMesa);
-    }
-
-    public void verMesas(List<Mesa> listaMesas) {
-        System.out.println("Mesas disponibles:");
-        listaMesas.forEach(mesa -> {
-            System.out.println("Número de Mesa: " + mesa.getNumeroMesa() + ", Capacidad: " + mesa.getCapacidad());
-        });
-    }
-
-    public List<Mesa> obtenerMesasDisponibles() {
-        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
-        List<Mesa> mesasDisponibles = new ArrayList<>();
-
-        todasLasMesas.forEach(mesa -> {
-            if (mesa.getReservada() == false) {
-                mesasDisponibles.add(mesa);
+//    public void eliminarMesa(Mesa m) {
+//        List<Mesa> mesaList = leerMesa();
+//        mesaList.remove(m);
+//        try(FileWriter writer = new FileWriter("mesa.json")){
+//            Gson gson = new GsonBuilder().create();
+//            String jsonString = gson.toJson(m);
+//            writer.append(jsonString);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+  //  }
+    public boolean verificarMesaDisponible(int numeroMesa) {
+        try {
+            List<Mesa> mesas = leerMesa();
+            for (Mesa mesa : mesas) {
+                if (mesa.getNumMesa() == numeroMesa && mesa.getSituacion() == Situacion.LIBRE) {
+                    return true;
+                }
             }
-        });
+        } catch (Exception e) {
+            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public List<Mesa> consultarMesasDisponibles() {
+        List<Mesa> mesasDisponibles = null;
+        try {
+            List<Mesa> mesas = leerMesa();
+            mesasDisponibles = new ArrayList<>();
+
+            for (Mesa mesa : mesas) {
+                if (mesa.getSituacion() == Situacion.LIBRE) {
+                    mesasDisponibles.add(mesa);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
+        }
         return mesasDisponibles;
-    }
-
-    public void modificarCapacidadMesa(int numeroDeMesa, int nuevaCapacidad) {
-        Mesa mesaAModificar = buscarMesaPorNumero(numeroDeMesa);
-
-        if (mesaAModificar != null) {
-            mesaAModificar.setCapacidad(nuevaCapacidad);
-            GestorJSON.actualizarJsonMesa(mesaAModificar);
-            System.out.println("Capacidad de la mesa " + numeroDeMesa + " modificada con éxito.");
-        } else {
-            System.out.println("No se encontró una mesa con el número especificado.");
-        }
-    }
-
-    public void eliminarMesa(int numeroDeMesaABorrar) {
-        GestorJSON.borrarMesaDeJSON(numeroDeMesaABorrar);
-
-        System.out.println("Mesa " + numeroDeMesaABorrar + " borrada con exito.");
     }
 
     @Override

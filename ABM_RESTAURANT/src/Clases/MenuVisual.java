@@ -32,26 +32,59 @@ public class MenuVisual {
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
     }
     //----------------------------
     public void menuRegistrar(){
-        System.out.println("***** REGISTRAR (FALTA IMPLEMENTAR) ****\n\n\n");
+
     }
     //----------------------------
     public void menuLogin(){
+/*
         Scanner scan = new Scanner(System.in);
-        String opcion = null;
         boolean flag = false;
+        Usuario u = new Usuario();
+        String nombreUsuario;
+        String password;
+        String salida;
+
+        do{
+            System.out.printf("    Ingrese S para continuar o N para salir: ");
+            salida=scan.nextLine();
+            if(salida.equals("n") || salida.equals("N")){
+                flag=true;
+            }else{
+                System.out.printf("    Ingrese Nombre de Usuario: ");
+                nombreUsuario=scan.nextLine();
+                System.out.printf("    Ingrese Password: ");
+                password=scan.nextLine();
+
+                //u = login(nombreUsuario, password);
+                if(u == null){
+                    System.out.println("    Usuario o Password invalidos...");
+                }else{
+                    if(u instanceof Cliente){
+                        menuCliente();
+                    }else{
+                        menuAdministrador();
+                    }
+                }
+            }
+        }while(flag==false && (salida.equals("s") || !salida.equals("S") || !salida.equals("n") || !salida.equals("N")));
+*/
+        //------------------------------------------------------------------------
+        Scanner scan2 = new Scanner(System.in);
+        String opcion = null;
+        boolean flag2 = false;
         do {
-            System.out.println("    <<< LOGIN >>>");
-            System.out.println("    1 - Login Administrador");
-            System.out.println("    2 - Login Cliente");
-            System.out.println("    0 - ATRAS");
-            System.out.printf("    Seleccione una opcion... ");
-            opcion = scan.nextLine();
+            System.out.println("<<< LOGIN >>>");
+            System.out.println("1 - Login Administrador");
+            System.out.println("2 - Login Cliente");
+            System.out.println("0 - ATRAS");
+            System.out.printf("Seleccione una opcion... ");
+            opcion = scan2.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("0")){
                 switch (opcion) {
@@ -63,12 +96,12 @@ public class MenuVisual {
                         break;
                     case "0":
                         System.out.println(".....................");
-                        flag = true;
+                        flag2 = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("Opcion invalida, vualva a intentarlo...\n");
             }
-        }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
+        }while(flag2==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
     }
     //----------------------------
     public void menuAdministrador(){
@@ -76,13 +109,13 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("        <<< ADMINISTRADOR >>>");
-            System.out.println("        1 - Gestionar Reservas");
-            System.out.println("        2 - Gestionar Menu");
-            System.out.println("        3 - Gestionar Mesas");
-            System.out.println("        4 - Gestionar Usuarios");
-            System.out.println("        0 - ATRAS");
-            System.out.printf("        Seleccione una opcion... ");
+            System.out.println("    <<< ADMINISTRADOR >>>");
+            System.out.println("    1 - Gestionar Reservas");
+            System.out.println("    2 - Gestionar Menu");
+            System.out.println("    3 - Gestionar Mesas");
+            System.out.println("    4 - Gestionar Usuarios");
+            System.out.println("    0 - ATRAS");
+            System.out.printf("    Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("4") || opcion.equals("0")){
@@ -100,11 +133,11 @@ public class MenuVisual {
                         menuGestionarUsuario();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("    .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("    Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("4") || !opcion.equals("0")));
     }
@@ -114,18 +147,18 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("            <<< GESTIONAR USUARIOS >>>");
-            System.out.println("            1 - Ver Usuarios");
-            System.out.println("            2 - Buscar Usuario");
-            System.out.println("            3 - Agregar Administrador");
-            System.out.println("            0 - ATRAS");
-            System.out.printf("            Seleccione una opcion... ");
+            System.out.println("        <<< GESTIONAR USUARIOS >>>");
+            System.out.println("        1 - Ver Lista de Usuarios");
+            System.out.println("        2 - Buscar Usuario");
+            System.out.println("        3 - Agregar Administrador");
+            System.out.println("        0 - ATRAS");
+            System.out.printf("        Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("0")){
                 switch (opcion) {
                     case "1":
-                        menuVerUsuarios();
+                        System.out.println("VER LISTA DE USUARIOS (FLATA IMPLEMENTAR\n\n)");
                         break;
                     case "2":
                         menuBuscarUsuario();
@@ -134,48 +167,83 @@ public class MenuVisual {
                         menuAgregarAdministrador();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("0")));
-
     }
     //----------------------------
-    public void menuVerUsuarios(){  //Filtrar usuario por admin o cliente
+    public void menuBuscarUsuario(){
         Scanner scan = new Scanner(System.in);
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("                <<< VER USUARIOS >>>");
-            System.out.println("                1 - Ver Administradores");
-            System.out.println("                2 - Ver Clientes");
-            System.out.println("                0 - ATRAS");
-            System.out.printf("                Seleccione una opcion... ");
+            System.out.println("            <<< BUSCAR USUARIO >>>");
+            System.out.println("            1 - Por Id");
+            System.out.println("            2 - Por DNI");
+            System.out.println("            0 - ATRAS");
+            System.out.printf("            Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("0")){
                 switch (opcion) {
                     case "1":
-                        System.out.println("***** FILTRAR ADMINISTRADORES (FALTA IMPLEMENTAR) *****\n\n\n");
+                        menuBuscarPorId();
                         break;
                     case "2":
-                        System.out.println("***** FLITRAR CLIENTES (FALTA IMPLEMENTAR) ****\n\n\n");
+                        menuBuscarPorDNI();
+                        break;
+                    case "0":
+                        System.out.println("            .....................");
+                        flag = true;
+                }
+            }else{
+                System.out.println("            Opcion invalida, vualva a intentarlo...\n");
+            }
+        }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
+    }
+    //----------------------------
+    public void menuBuscarPorId(){
+        System.out.println("BUSCAR USUARIO POR ID (FALTA IMPLEMENTAR)\n\n");
+    }
+    //----------------------------
+    public void menuBuscarPorDNI(){
+        System.out.println("BUSCAR USUARIO POR ID (FALTA IMPLEMENTAR)\n\n");
+    }
+    //----------------------------
+    public void menuUsuarioEncontrado(){
+        Scanner scan = new Scanner(System.in);
+        String opcion = null;
+        boolean flag = false;
+        do {
+            System.out.println("<<< ESTE USUARIO >>>");
+            //MUESTRA DATOS USUARIO
+            System.out.println("DATOS DE ESTE USUARIO\ndato1\ndato2\ndato3\n\n");
+            System.out.println("1 - Eliminar Usuario");
+            System.out.println("0 - ATRAS");
+            System.out.printf("Seleccione una opcion... ");
+            opcion = scan.nextLine();
+
+            if(opcion.equals("1") || opcion.equals("0")){
+                switch (opcion) {
+                    case "1":
+                        menuEliminarUsuario();
                         break;
                     case "0":
                         System.out.println(".....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("Opcion invalida, vualva a intentarlo...\n");
             }
-        }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
+        }while(flag==false && (!opcion.equals("1") || !opcion.equals("0")));
     }
     //----------------------------
-    public void menuBuscarUsuario(){
-        System.out.println("BUSCAR USUARIO (FALTA IMPLEMENTAR)\n\n\n");
+    public void menuEliminarUsuario(){
+        System.out.println("ELIMINAR ESTE USUARIO (FALTA IMPLEMENTAR)\n\n");
     }
     //----------------------------
     public void menuAgregarAdministrador(){
@@ -187,16 +255,15 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("        <<< CLIENTE >>>");
-            System.out.println("        1 - Hacer Reserva");
-            System.out.println("        2 - Ver Reserva");
-            System.out.println("        3 - Cancelar Reserva");
-            System.out.println("        4 - Ver Datos Cliente");
-            System.out.println("        0 - ATRAS");
-            System.out.printf("        Seleccione una opcion... ");
+            System.out.println("    <<< CLIENTE >>>");
+            System.out.println("    1 - Hacer Reserva");
+            System.out.println("    2 - Ver Reserva");
+            System.out.println("    3 - Ver Datos Cliente");
+            System.out.println("    0 - ATRAS");
+            System.out.printf("    Seleccione una opcion... ");
             opcion = scan.nextLine();
 
-            if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("4") || opcion.equals("0")){
+            if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("0")){
                 switch (opcion) {
                     case "1":
                         menuHacerReserva();
@@ -205,19 +272,16 @@ public class MenuVisual {
                         menuVerReserva();
                         break;
                     case "3":
-                        menuCancelarReserva();
-                        break;
-                    case "4":
                         menuVerDatosCliente();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("    .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("    Opcion invalida, vualva a intentarlo...\n");
             }
-        }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("4") || !opcion.equals("0")));
+        }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("0")));
     }
     //----------------------------
     public void menuHacerReserva(){
@@ -228,22 +292,18 @@ public class MenuVisual {
         System.out.println("VER RESERVA (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
-    public void menuCancelarReserva(){
-        System.out.println("CANCELAR RESERVA (FALTA IMPLEMEMTAR)\n\n\n");
-    }
-    //----------------------------
     public void menuVerDatosCliente(){
-        System.out.println("<<< DATOS CLIENTE >>>");
+        System.out.println("        <<< DATOS CLIENTE >>>");
         //verCliente() sin password
-        System.out.println("DATOS AQUI...\nN\nA\nDNI\n\n");
+        System.out.println("        DATOS AQUI...\n        N\n        A\n        DNI\n\n");
         Scanner scan = new Scanner(System.in);
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println(".........................");
-            System.out.println("1 - Modificar Datos");
-            System.out.println("0 - ATRAS");
-            System.out.printf("Seleccione una opcion... ");
+            System.out.println("        .........................");
+            System.out.println("        1 - Modificar Datos");
+            System.out.println("        0 - ATRAS");
+            System.out.printf("        Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("0")){
@@ -252,11 +312,11 @@ public class MenuVisual {
                         menuModificarDatosCliente();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("0")));
     }
@@ -266,13 +326,13 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("<<< MODIFICAR DATOS CLIENTE >>>");
-            System.out.println("1 - Modificar Nombre de Usuario"); // VALIDAR NUEVO
-            System.out.println("2 - Modificar Nombre y Apellido");
-            System.out.println("3 - Modificar E-Mail");
-            System.out.println("4 - Cambiar Password");
-            System.out.println("0 - ATRAS");
-            System.out.printf("Seleccione una opcion... ");
+            System.out.println("            <<< MODIFICAR DATOS CLIENTE >>>");
+            System.out.println("            1 - Modificar Nombre de Usuario"); // VALIDAR NUEVO
+            System.out.println("            2 - Modificar Nombre y Apellido");
+            System.out.println("            3 - Modificar E-Mail");
+            System.out.println("            4 - Cambiar Password");
+            System.out.println("            0 - ATRAS");
+            System.out.printf("            Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("4") || opcion.equals("0")){
@@ -290,11 +350,11 @@ public class MenuVisual {
                         menuCambiarPassword();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("            .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("            Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("4") || !opcion.equals("0")));
     }
@@ -320,11 +380,11 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("            <<< GESTIONAR RESERVAS >>>");
-            System.out.println("            1 - Ver Lista de Reservas");
-            System.out.println("            2 - Buscar Reserva");
-            System.out.println("            0 - ATRAS");
-            System.out.printf("            Seleccione una opcion... ");
+            System.out.println("        <<< GESTIONAR RESERVAS >>>");
+            System.out.println("        1 - Ver Lista de Reservas");
+            System.out.println("        2 - Buscar Reserva");
+            System.out.println("        0 - ATRAS");
+            System.out.printf("        Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("0")){
@@ -336,11 +396,11 @@ public class MenuVisual {
                         menuBuscarReserva();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
     }
@@ -352,7 +412,7 @@ public class MenuVisual {
         do {
             System.out.println("<<< VER LISTA DE RESERVAS >>>");
             //FUNCION: Muestra lista de reservas
-            System.out.println("LISTA DE RESERVAS\n...a\n...b\n...c...\n\n");
+            System.out.println("LISTA DE RESERVAS\n...a\n...b\n...c\n\n");
             System.out.printf("0 - ESCAPE ");
             opcion = scan.nextLine();
 
@@ -360,13 +420,43 @@ public class MenuVisual {
                 System.out.println(".....................");
                 flag = true;
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("0")));
     }
     //----------------------------
     public void menuBuscarReserva(){
-        System.out.println("BUSCAR RESERVA (FALTA IMPLEMENTAR\n\n\n)");
+        //cambiar Objetc por Reserva
+        Object buscada = new Object();
+
+        if(buscada!=null){
+            Scanner scan = new Scanner(System.in);
+            String opcion = null;
+            boolean flag = false;
+            do {
+                //Muestra Reserva
+                System.out.println("MUESTRA RESERVAS:\ndato1\ndato2\ndato3\n\n");
+                System.out.println("1 - Cerrar Reserva");
+                System.out.println("0 - ATRAS");
+                System.out.printf("Seleccione una opcion... ");
+                opcion = scan.nextLine();
+
+                if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("0")){
+                    switch (opcion) {
+                        case "1":
+                            //  Cerrar Reserva
+                            break;
+                        case "0":
+                            System.out.println(".....................");
+                            flag = true;
+                    }
+                }else{
+                    System.out.println("Opcion invalida, vualva a intentarlo...\n");
+                }
+            }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("0")));
+        }else{
+            System.out.println("Reserva Inexistente.\n");
+        }
     }
     //----------------------------
     public void modificarReserva(){
@@ -398,7 +488,7 @@ public class MenuVisual {
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("                Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("3") || !opcion.equals("0")));
     }
@@ -420,57 +510,59 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("<<< GESTIONAR MENU >>>");
-            System.out.println("1 - Ver Lista de Productos");
-            System.out.println("2 - Agregar Producto");
-            System.out.println("3 - Buscar Producto");
-            System.out.println("0 - ATRAS");
-            System.out.printf("Seleccione una opcion... ");
+            System.out.println("        <<< GESTIONAR MENU >>>");
+            System.out.println("        1 - Ver Lista de Items");
+            System.out.println("        2 - Agregar Item");
+            System.out.println("        3 - Buscar Itrem");
+            System.out.println("        0 - ATRAS");
+            System.out.printf("        Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("0")){
                 switch (opcion) {
                     case "1":
-                        menuVerListaProductos();
+                        menuVerListaItems();
                         break;
                     case "2":
-                        menuAgregarProducto();
+                        menuAgregarItem();
                         break;
                     case "3":
-                        menuBuscarProducto();
+                        menuBuscarItem();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || opcion.equals("3") || !opcion.equals("0")));
     }
     //----------------------------
-    public void menuVerListaProductos(){
+    public void menuVerListaItems(){
         System.out.println("VER LISTA DE PRODUCTOS (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
-    public void menuAgregarProducto(){
+    public void menuAgregarItem(){
         System.out.println("AGREGAR PRODUCTO (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
-    public void menuBuscarProducto(){
+    public void menuBuscarItem(){
         System.out.println("BUSCAR PRODCUTO (FALTA IMPLEMENTAR)\n\n\n");
+
+        menuModificarItem();
     }
     //----------------------------
-    public void menuModificarProducto(){
+    public void menuModificarItem(){
         Scanner scan = new Scanner(System.in);
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("<<< MODIFICAR PRODUCTO >>>");
-            System.out.println("1 - Modificar Precio");
-            System.out.println("2 - Modificar Disponibilidad");
-            System.out.println("0 - ATRAS");
-            System.out.printf("Seleccione una opcion... ");
+            System.out.println("                <<< MODIFICAR ITEM >>>");
+            System.out.println("                1 - Precio");
+            System.out.println("                2 - Disponibilidad");
+            System.out.println("                0 - ATRAS");
+            System.out.printf("                Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("0")){
@@ -482,21 +574,21 @@ public class MenuVisual {
                         menuModificarDisponibilidad();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || !opcion.equals("0")));
     }
     //----------------------------
     public void menuModificarPrecio(){
-        System.out.println("MODIFICAR PRECIO (FALTA IMPLEMENTAR\n\n\n)");
+        System.out.println("MODIFICAR PRECIO (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
     public void menuModificarDisponibilidad(){
-        System.out.println("MODIFICAR DISPONIBILIDAD (FALTA IMPLEMENTAR\n\n\n)");
+        System.out.println("MODIFICAR DISPONIBILIDAD (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
     public void menuGestionarMesas(){
@@ -504,13 +596,12 @@ public class MenuVisual {
         String opcion = null;
         boolean flag = false;
         do {
-            System.out.println("<<< GESTIONAR MESAS >>>");
-            System.out.println("1 - Ver Lista de Mesas");
-            System.out.println("2 - Mesas Disponibles");
-            System.out.println("4 - Agregar Mesa");
-            System.out.println("4 - Buscar Mesa");
-            System.out.println("0 - ATRAS");
-            System.out.printf("Seleccione una opcion... ");
+            System.out.println("        <<< GESTIONAR MESAS >>>");
+            System.out.println("        1 - Ver Lista de Mesas");
+            System.out.println("        2 - Agregar Mesa");
+            System.out.println("        3 - Quitar Mesa");
+            System.out.println("        0 - ATRAS");
+            System.out.printf("        Seleccione una opcion... ");
             opcion = scan.nextLine();
 
             if(opcion.equals("1") || opcion.equals("2") || opcion.equals("3") || opcion.equals("4") || opcion.equals("0")){
@@ -519,20 +610,20 @@ public class MenuVisual {
                         menuVerListaMesas();
                         break;
                     case "2":
-                        menuMesasDisponibles();
+                        menuVerListaMesas();
                         break;
                     case "3":
                         menuAgregarMesa();
                         break;
                     case "4":
-                        menuBuscarMesa();
+                        menuQuitarMesa();
                         break;
                     case "0":
-                        System.out.println(".....................");
+                        System.out.println("        .....................");
                         flag = true;
                 }
             }else{
-                System.out.println("Opcion invalida, vualva a intentarlo...");
+                System.out.println("        Opcion invalida, vualva a intentarlo...\n");
             }
         }while(flag==false && (!opcion.equals("1") || !opcion.equals("2") || opcion.equals("3") || opcion.equals("4")|| !opcion.equals("0")));
     }
@@ -541,17 +632,14 @@ public class MenuVisual {
         System.out.println("VER LISTA DE MESAS (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
-    public void menuMesasDisponibles(){
-        System.out.println("VER MESAS DISPONIBLES (FALTA IMPLEMENTAR)\n\n\n");
-    }
-    //----------------------------
     public void menuAgregarMesa(){
         System.out.println("AGREGAR MESDA (FALTA IMPLEMENTAR)\n\n\n");
     }
     //----------------------------
-    public void menuBuscarMesa(){
+    public void menuQuitarMesa(){
         System.out.println("BUSCAR MESA (FALTA IMPLEMENTAR)\n\n\n");
     }
-    //----------------------------
+
+//----------------------------
 
 }
