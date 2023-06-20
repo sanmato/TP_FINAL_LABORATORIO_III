@@ -1,5 +1,6 @@
 package Gestores;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -62,4 +63,5 @@ public class GestorUsuarios {
         return usuariosCreados.stream()
                 .anyMatch(usuarioActual -> usuarioActual.getNombreUsuario().equals(username));
     }
+
 }

@@ -2,11 +2,17 @@ package Clases;
 
 import java.util.Scanner;
 
+import com.google.gson.annotations.Expose;
+
 public class Usuario {
+    @Expose
     private int id;
+    @Expose
     private String nombreUsuario;
+    @Expose
     private String nombre_apellido;
     private String password;
+    @Expose
     private String email;
     private boolean esAdmin;
     private static int nextId = 1;
@@ -101,7 +107,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido=" + nombre_apellido
-                 + ", email=" + email + ", esAdmin=" + esAdmin + "]";
+                + ", email=" + email + ", esAdmin=" + esAdmin + "]";
     }
 
     @Override

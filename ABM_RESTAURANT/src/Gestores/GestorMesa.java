@@ -3,6 +3,8 @@ package Gestores;
 import Clases.Mesa;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class GestorMesa {
     public ArrayList<Mesa> mesas;
@@ -22,6 +24,29 @@ public class GestorMesa {
         return null;
     }
 
+    public Mesa seleccionarMesa(List<Mesa> mesasDisponibles) {
+        mesasDisponibles = obtenerMesasDisponibles();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Seleccione el número de mesa:");
+        int numeroDeMesa = scanner.nextInt();
+
+        Optional<Mesa> optionalMesa = mesasDisponibles.stream()
+                .filter(mesa -> mesa.getNumeroMesa() == numeroDeMesa)
+                .findFirst();
+
+        if (optionalMesa.isPresent()) {
+            Mesa mesaSeleccionada = optionalMesa.get();
+            mesaSeleccionada.setReservada(true);
+
+            GestorJSON.actualizarJsonMesa(mesaSeleccionada);
+
+            return mesaSeleccionada;
+        }
+
+        return null;
+    }
+
     public void agregarNuevaMesa(Integer numeroDeMesa, Integer capacidadMesa) {
         Mesa nuevaMesa = new Mesa(numeroDeMesa, capacidadMesa);
 
@@ -30,21 +55,23 @@ public class GestorMesa {
         GestorJSON.agregarAJsonMesa(nuevaMesa);
     }
 
-    public void verMesas() {
-        List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
-
-        System.out.println(todasLasMesas);
+    public void verMesas(List<Mesa> listaMesas) {
+        System.out.println("Mesas disponibles:");
+        listaMesas.forEach(mesa -> {
+            System.out.println("Número de Mesa: " + mesa.getNumeroMesa() + ", Capacidad: " + mesa.getCapacidad());
+        });
     }
 
-    public void verMesasDisponibles() {
+    public List<Mesa> obtenerMesasDisponibles() {
         List<Mesa> todasLasMesas = GestorJSON.leerJsonMesa();
+        List<Mesa> mesasDisponibles = new ArrayList<>();
 
-        System.out.println("Mesas disponibles:");
         todasLasMesas.forEach(mesa -> {
             if (mesa.getReservada() == false) {
-                System.out.println(mesa.toString());
+                mesasDisponibles.add(mesa);
             }
         });
+        return mesasDisponibles;
     }
 
     public void modificarCapacidadMesa(int numeroDeMesa, int nuevaCapacidad) {

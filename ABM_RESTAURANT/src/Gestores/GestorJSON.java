@@ -8,12 +8,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 public class GestorJSON {
@@ -201,4 +209,57 @@ public class GestorJSON {
 
     // #endregion
 
+    // #region: Manejo de JSON para la reserva
+    public static void agregarAJsonReserva(Reserva reserva) {
+        List<Reserva> reservas = leerJsonReservas();
+        reservas.add(reserva);
+
+        try (FileWriter writer = new FileWriter("reservas.json")) {
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
+                    .create();
+            gson.toJson(reservas, writer);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo JSON: " + e.getMessage());
+        }
+
+    }
+
+    public static List<Reserva> leerJsonReservas() {
+        File file = new File("reservas.json");
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+        try (Reader reader = new FileReader(file)) {
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
+                    .create();
+            Type type = new TypeToken<List<Reserva>>() {
+            }.getType();
+            return gson.fromJson(reader, type);
+        } catch (IOException e) {
+            System.out.println("Error al leer los datos del archivo: " + e.getMessage());
+        }
+        return new ArrayList<>();
+    }
+
+    // #endregion
+
+    // #region: Ambito de adaptadores de LocalDate privados
+    private static class AdaptadorLocalDate implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
+        @Override
+        public JsonElement serialize(LocalDate fecha, Type tipo, JsonSerializationContext contexto) {
+            return new JsonPrimitive(fecha.toString());
+        }
+
+        @Override
+        public LocalDate deserialize(JsonElement json, Type tipo, JsonDeserializationContext contexto)
+                throws JsonParseException {
+            return LocalDate.parse(json.getAsString());
+        }
+    }
+    // #endregion
 }

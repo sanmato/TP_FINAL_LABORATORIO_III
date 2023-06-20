@@ -1,7 +1,11 @@
 package Clases;
 
+import com.google.gson.annotations.Expose;
+
 public class Mesa {
+    @Expose
     private Integer numeroMesa;
+    @Expose
     private Integer capacidad;
     private Boolean reservada;
 
