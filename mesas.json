@@ -7,7 +7,7 @@
   {
     "numeroMesa": 28,
     "capacidad": 7,
-    "reservada": false
+    "reservada": true
   },
   {
     "numeroMesa": 32,

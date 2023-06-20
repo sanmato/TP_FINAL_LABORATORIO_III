@@ -48,7 +48,10 @@ public class Sistema {
         Usuario usr = new Cliente("santmat", "Santiago Manuel", "123456", "santiago@santiago.com");
         Usuario usr2 = new Cliente("santm", "Santiago Manuek", "123456", "mail@mail.com");
         // gestorReserva.agregarReserva(usr, LocalDate.now());
-        gestorReserva.agregarReserva(usr2, LocalDate.now());
+        gestorReserva.agregarReserva(usr2);
+        gestorReserva.verReserva(usr2);
+        // gestorReserva.modificarReserva(usr2);
+        // gestorReserva.eliminarReserva(usr2);
 
         scanner.close();
 

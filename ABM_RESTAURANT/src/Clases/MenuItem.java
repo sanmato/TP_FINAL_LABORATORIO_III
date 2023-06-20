@@ -1,10 +1,16 @@
 package Clases;
 
+import com.google.gson.annotations.Expose;
+
 public class MenuItem {
     private int numeroPlato;
+    @Expose
     private TipoPlato tipo;
+    @Expose
     private String nombre;
+    @Expose
     private String descripcion;
+    @Expose
     private double precio;
 
     public MenuItem(int numeroPlato, TipoPlato tipo, String nombre, String descripcion, double precio) {

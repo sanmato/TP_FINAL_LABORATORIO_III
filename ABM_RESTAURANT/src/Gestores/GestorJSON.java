@@ -187,7 +187,6 @@ public class GestorJSON {
     public static void borrarMenuDeJSON(int numeroDePlatoABorrar) {
         List<MenuItem> menuActual = leerJsonMenu();
 
-        // Use stream and filter to find the mesa with the given ID
         Optional<MenuItem> optionalPlatoABorrar = menuActual.stream()
                 .filter(item -> item.getNumeroPlato() == numeroDePlatoABorrar)
                 .findFirst();
@@ -217,6 +216,7 @@ public class GestorJSON {
         try (FileWriter writer = new FileWriter("reservas.json")) {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
+                    .excludeFieldsWithoutExposeAnnotation()
                     .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
                     .create();
             gson.toJson(reservas, writer);
@@ -244,6 +244,54 @@ public class GestorJSON {
             System.out.println("Error al leer los datos del archivo: " + e.getMessage());
         }
         return new ArrayList<>();
+    }
+
+    public static void actualizarJsonReserva(Reserva reservaAModificar) {
+        List<Reserva> reservasExistentes = leerJsonReservas();
+
+        reservasExistentes.forEach(reservaActual -> {
+            if (reservaActual.getId() == reservaAModificar.getId()) {
+                reservasExistentes.set(reservasExistentes.indexOf(reservaActual), reservaAModificar);
+            }
+        });
+
+        try (FileWriter writer = new FileWriter("reservas.json")) {
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .excludeFieldsWithoutExposeAnnotation()
+                    .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
+                    .create();
+            gson.toJson(reservasExistentes, writer);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo JSON de la reserva");
+        }
+
+    }
+
+    public static void borrarReservaDeJSON(Reserva reservaABorrar) {
+        List<Reserva> reservasActuales = leerJsonReservas();
+
+        Optional<Reserva> optionalReservaABorrar = reservasActuales.stream()
+                .filter(reserva -> reserva.getId() == reservaABorrar.getId())
+                .findFirst();
+
+        if (optionalReservaABorrar.isPresent()) {
+            Reserva reservaEncontrada = optionalReservaABorrar.get();
+            reservasActuales.remove(reservaEncontrada);
+
+            try (FileWriter writer = new FileWriter("reservas.json")) {
+                Gson gson = new GsonBuilder()
+                        .setPrettyPrinting()
+                        .excludeFieldsWithoutExposeAnnotation()
+                        .registerTypeAdapter(LocalDate.class, new AdaptadorLocalDate())
+                        .create();
+                gson.toJson(reservasActuales, writer);
+            } catch (IOException e) {
+                System.out.println("Error al escribir en el archivo JSON de las reservas");
+            }
+        } else {
+            System.out.println("No se encontró una reserva con el ID especificado.");
+        }
     }
 
     // #endregion
