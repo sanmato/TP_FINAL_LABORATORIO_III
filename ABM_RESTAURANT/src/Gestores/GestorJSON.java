@@ -28,7 +28,7 @@ public class GestorJSON {
 
     // #region: Manejo de JSON para usuarios
     public static void agregarAJson(Usuario usuarioActual) {
-        List<Usuario> usuariosCreados = leerJson();
+        List<Usuario> usuariosCreados = leerJsonUsuarios();
 
         usuariosCreados.add(usuarioActual);
 
@@ -40,7 +40,7 @@ public class GestorJSON {
         }
     }
 
-    public static List<Usuario> leerJson() {
+    public static List<Usuario> leerJsonUsuarios() {
         File file = new File("users.json");
         if (!file.exists()) {
             return new ArrayList<>();
@@ -56,6 +56,46 @@ public class GestorJSON {
         }
 
         return new ArrayList<>();
+    }
+
+    public static void actualizarJsonUsuarios(Usuario usuarioAModificar) {
+        List<Usuario> usuariosExistentes = leerJsonUsuarios();
+
+        usuariosExistentes.forEach(usuarioActual -> {
+            if (usuarioActual.getId() == usuarioAModificar.getId()) {
+                usuariosExistentes.set(usuariosExistentes.indexOf(usuarioActual), usuarioAModificar);
+            }
+        });
+
+        try (FileWriter writer = new FileWriter("users.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(usuariosExistentes, writer);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo JSON de los usuarios");
+        }
+
+    }
+
+    public static void borrarUsuarioDeJSON(int idDeUsuarioABorrar) {
+        List<Usuario> usuariosExistentes = leerJsonUsuarios();
+
+        Optional<Usuario> optionalUsuarioABorrar = usuariosExistentes.stream()
+                .filter(usuario -> usuario.getId() == idDeUsuarioABorrar)
+                .findFirst();
+
+        if (optionalUsuarioABorrar.isPresent()) {
+            Usuario usuarioABorrar = optionalUsuarioABorrar.get();
+            usuariosExistentes.remove(usuarioABorrar);
+
+            try (FileWriter writer = new FileWriter("users.json")) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                gson.toJson(usuariosExistentes, writer);
+            } catch (IOException e) {
+                System.out.println("Error al escribir en el archivo JSON de usuarios");
+            }
+        } else {
+            System.out.println("No se encontró un usuario con el ID especificado.");
+        }
     }
 
     // #endregion

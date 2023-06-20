@@ -33,5 +33,12 @@
     "nombre": "Papas fritas con Cheddar",
     "descripcion": "Bandeja de papas fritas con queso cheddar.",
     "precio": 1000.0
+  },
+  {
+    "numeroPlato": 7,
+    "tipo": "ENTRADA",
+    "nombre": "Chinchulines",
+    "descripcion": "Bandejita de chinchulines a la parrilla, viene con chimichurri para acompa¤ar.",
+    "precio": 1200.0
   }
 ]

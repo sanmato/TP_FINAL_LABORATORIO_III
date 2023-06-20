@@ -22,7 +22,7 @@ public class GestorReserva {
     public void agregarReserva(Usuario usuario) {
         GestorMesa gestorMesa = new GestorMesa();
         List<Mesa> mesasDisponibles = gestorMesa.obtenerMesasDisponibles();
-        gestorMesa.verMesas(mesasDisponibles);
+        gestorMesa.mostrarMesasDisponibles();
 
         if (mesasDisponibles.isEmpty()) {
             System.out.println("No hay mesas disponibles para hacer la reserva.");
@@ -155,8 +155,11 @@ public class GestorReserva {
         Reserva reservaReciente = buscarReservaReciente(usuarioQueTieneReserva, reservas);
         if (reservaReciente != null) {
             GestorJSON.borrarReservaDeJSON(reservaReciente);
-            reservaReciente.getMesa().setReservada(false);
-            // falta actualizar el estado de setReservada
+
+            Mesa mesaReserva = reservaReciente.getMesa();
+            mesaReserva.setReservada(false);
+            GestorJSON.actualizarJsonMesa(mesaReserva);
+
             System.out.println("Reserva eliminada exitosamente.");
         } else {
             System.out.println("No se encontró una reserva reciente para el usuario especificado.");

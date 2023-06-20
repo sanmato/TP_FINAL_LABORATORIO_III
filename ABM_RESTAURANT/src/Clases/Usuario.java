@@ -1,12 +1,12 @@
 package Clases;
 
-import java.util.Scanner;
-
 import com.google.gson.annotations.Expose;
 
 public class Usuario {
     @Expose
     private int id;
+    @Expose
+    private String dni;
     @Expose
     private String nombreUsuario;
     @Expose
@@ -14,16 +14,14 @@ public class Usuario {
     private String password;
     @Expose
     private String email;
-    private boolean esAdmin;
-    private static int nextId = 1;
 
-    public Usuario(String nombreUsuario, String nombre_apellido, String password, String email) {
-        this.id = nextId++;
+    public Usuario(int id, String dni, String nombreUsuario, String nombre_apellido, String password, String email) {
+        this.id = id;
+        this.dni = dni;
         this.nombreUsuario = nombreUsuario;
         this.nombre_apellido = nombre_apellido;
         this.password = password;
         this.email = email;
-        this.esAdmin = false;
     }
 
     public Usuario() {
@@ -35,6 +33,14 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombreUsuario() {
@@ -69,47 +75,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public boolean isEsAdmin() {
-        return esAdmin;
-    }
-
-    public void setEsAdmin(boolean esAdmin) {
-        this.esAdmin = esAdmin;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public static void setNextId(int nextId) {
-        Usuario.nextId = nextId;
-    }
-
-    public Usuario datosManual() {
-        Scanner scan = new Scanner(System.in);
-        Usuario u = new Usuario();
-
-        System.out.printf("Ingrese Nombre de Usuario: ");
-        u.setNombreUsuario(scan.nextLine());
-
-        System.out.printf("Ingrese Nombre Completo: ");
-        u.setNombre_apellido(scan.nextLine());
-
-        System.out.printf("Ingrese Password: ");
-        u.setPassword(scan.nextLine());
-
-        System.out.printf("Ingrese Email: ");
-        u.setEmail(scan.nextLine());
-
-        return u;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido=" + nombre_apellido
-                + ", email=" + email + ", esAdmin=" + esAdmin + "]";
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -119,7 +84,7 @@ public class Usuario {
         result = prime * result + ((nombre_apellido == null) ? 0 : nombre_apellido.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + (esAdmin ? 1231 : 1237);
+        result = prime * result + ((dni == null) ? 0 : dni.hashCode());
         return result;
     }
 

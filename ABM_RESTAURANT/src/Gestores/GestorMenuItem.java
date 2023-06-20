@@ -25,6 +25,19 @@ public class GestorMenuItem {
         return null;
     }
 
+    private int generarNuevaId() {
+        List<MenuItem> menuExistente = GestorJSON.leerJsonMenu();
+        int maxId = 0;
+
+        for (MenuItem plato : menuExistente) {
+            if (plato.getNumeroPlato() > maxId) {
+                maxId = plato.getNumeroPlato();
+            }
+        }
+
+        return maxId + 1;
+    }
+
     private int solicitarNumeroPlato(Scanner scanner) {
         System.out.println("Ingrese el número de plato para identificar: ");
         return scanner.nextInt();
@@ -64,8 +77,7 @@ public class GestorMenuItem {
     public void agregarAlMenu() {
         Scanner scanner = new Scanner(System.in);
 
-        int numeroPlato = solicitarNumeroPlato(scanner);
-        scanner.nextLine();
+        int numeroPlato = generarNuevaId();
         TipoPlato tipoPlato = solicitarTipoPlato(scanner);
         String nombre = solicitarNombrePlato(scanner);
         String descripcion = solicitarDescripcionPlato(scanner);
@@ -81,7 +93,15 @@ public class GestorMenuItem {
 
     public void verMenu() {
         items = GestorJSON.leerJsonMenu();
-        System.out.println(items.toString());
+        items.forEach(plato -> {
+            System.out.println("============================================" + "\n"
+                    + "Numero de plato: " + plato.getNumeroPlato() + "\n"
+                    + "Tipo de plato: " + plato.getTipo() + "\n"
+                    + "Nombre: " + plato.getNombre() + "\n"
+                    + "Descripcion: " + plato.getDescripcion() + "\n"
+                    + "Precio: " + plato.getPrecio() + "\n"
+                    + "============================================");
+        });
     }
 
     public void verPlatosPorTipo() {
@@ -104,11 +124,11 @@ public class GestorMenuItem {
         Scanner scanner = new Scanner(System.in);
         int idABuscar = solicitarNumeroPlato(scanner);
         scanner.nextLine();
-        double nuevoPrecio = solicitarPrecioPlato(scanner);
 
         MenuItem platoAModificar = buscarItem(idABuscar);
 
         if (platoAModificar != null) {
+            double nuevoPrecio = solicitarPrecioPlato(scanner);
             platoAModificar.setPrecio(nuevoPrecio);
             GestorJSON.actualizarJsonMenu(platoAModificar);
             System.out.println("Precio del plato " + platoAModificar.getNombre() + " modificado con éxito.");
@@ -118,6 +138,7 @@ public class GestorMenuItem {
     }
 
     public void eliminarPlato() {
+        verMenu();
         Scanner scanner = new Scanner(System.in);
         int idABorrar = solicitarNumeroPlato(scanner);
         scanner.nextLine();

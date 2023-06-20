@@ -1,5 +1,7 @@
 package Clases;
 
+import java.util.StringJoiner;
+
 import com.google.gson.annotations.Expose;
 
 public class Mesa {
@@ -45,7 +47,10 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return "Numero: " + numeroMesa + ". Capacidad para " + capacidad + " personas.";
+        StringJoiner joiner = new StringJoiner("\n");
+        joiner.setEmptyValue("No hay mesas disponibles.");
+        joiner.add("Número de Mesa: " + numeroMesa + " | Capacidad para " + capacidad + " personas." + "\n");
+        return joiner.toString();
     }
 
     // endregion

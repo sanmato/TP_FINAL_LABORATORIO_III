@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
+    "dni": "41307627",
     "nombreUsuario": "sanmato",
-    "nombre_apellido": "Santiago Mato",
-    "password": "santiago@@1234",
-    "email": "santiago@mail.com",
-    "esAdmin": false
+    "nombre_apellido": "Santiago Manuel Mato",
+    "password": "santi@@1234",
+    "email": "santiago.mato@email.com"
   },
   {
-    "id": 1,
-    "nombreUsuario": "santi368",
+    "id": 2,
+    "dni": "41308627",
+    "nombreUsuario": "santy368",
     "nombre_apellido": "Santiago Manuel",
-    "password": "1234",
-    "email": "santiago@mail.com.ar",
-    "esAdmin": false
+    "password": "Santi1234@@",
+    "email": "santiago@mail.com"
   }
 ]

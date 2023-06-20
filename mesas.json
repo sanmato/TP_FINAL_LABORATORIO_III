@@ -1,17 +1,22 @@
 [
   {
-    "numeroMesa": 29,
+    "numeroMesa": 1,
     "capacidad": 6,
     "reservada": false
   },
   {
-    "numeroMesa": 28,
+    "numeroMesa": 2,
     "capacidad": 7,
-    "reservada": true
+    "reservada": false
   },
   {
-    "numeroMesa": 32,
+    "numeroMesa": 3,
     "capacidad": 2,
-    "reservada": true
+    "reservada": false
+  },
+  {
+    "numeroMesa": 4,
+    "capacidad": 4,
+    "reservada": false
   }
 ]
