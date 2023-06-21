@@ -1,5 +1,6 @@
 package Gestores;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import Clases.Usuario;
 
@@ -31,28 +32,34 @@ public class ManejadorMenu {
             System.out.println("3. Salir");
             System.out.println("===============================");
             System.out.print("Ingrese su opción: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
 
-            switch (choice) {
-                case 1:
-                    if (gestorUsuarios.login()) {
-                        usuarioLogueado = gestorUsuarios.getUsuarioLogueado();
-                        if (usuarioLogueado.getIsAdmin() == false) {
-                            showUserMenu();
-                        } else {
-                            verMenuAdministrador();
+            try {
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcion) {
+                    case 1:
+                        if (gestorUsuarios.login()) {
+                            usuarioLogueado = gestorUsuarios.getUsuarioLogueado();
+                            if (usuarioLogueado.getIsAdmin() == false) {
+                                showUserMenu();
+                            } else {
+                                verMenuAdministrador();
+                            }
                         }
-                    }
-                    break;
-                case 2:
-                    gestorUsuarios.registro();
-                    break;
-                case 3:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Opción inválida. Por favor, intente nuevamente.");
+                        break;
+                    case 2:
+                        gestorUsuarios.registro();
+                        break;
+                    case 3:
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("Opción inválida. Por favor, intente nuevamente.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Por favor, ingrese un número válido.");
+                scanner.nextLine();
             }
         }
 
@@ -75,10 +82,10 @@ public class ManejadorMenu {
             System.out.println("8. Cerrar Sesión");
             System.out.println("===============================");
             System.out.print("Ingrese su opción: ");
-            int choice = scanner.nextInt();
+            int opcion = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice) {
+            switch (opcion) {
                 case 1:
                     gestorUsuarios.cambiarClave(usuarioLogueado);
                     break;
@@ -123,10 +130,13 @@ public class ManejadorMenu {
             System.out.println("2. Gestion de Mesas");
             System.out.println("3. Gestion de Platos");
             System.out.println("4. Ver Reservas");
+            System.out.println("5. Cerrar Sesion");
             System.out.println("0. Salir");
+            System.out.println("===============================");
+            System.out.print("Ingrese su opción: ");
 
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -141,6 +151,8 @@ public class ManejadorMenu {
                 case 4:
                     gestorReserva.obtenerReservas();
                     break;
+                case 5:
+                    gestorUsuarios.logout();
                 case 0:
                     salir = true;
                     break;
@@ -161,6 +173,8 @@ public class ManejadorMenu {
             System.out.println("1. Ver Usuarios Registrados");
             System.out.println("2. Eliminar Usuario");
             System.out.println("0. Volver al Menu Principal");
+            System.out.println("===============================");
+            System.out.print("Ingrese su opción: ");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();
@@ -195,9 +209,11 @@ public class ManejadorMenu {
             System.out.println("4. Modificar la capacidad de una Mesa");
             System.out.println("5. Eliminar una mesa");
             System.out.println("0. Volver al Menu Principal");
+            System.out.println("===============================");
+            System.out.print("Ingrese su opción: ");
 
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -238,6 +254,8 @@ public class ManejadorMenu {
             System.out.println("4. Modificar el precio de un Plato");
             System.out.println("5. Retirar un Plato del Menu");
             System.out.println("0. Volver al Menu Principal");
+            System.out.println("===============================");
+            System.out.print("Ingrese su opción: ");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();

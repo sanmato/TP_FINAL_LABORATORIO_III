@@ -123,7 +123,7 @@ public class GestorUsuarios {
             Administrador nuevoUsuario = new Administrador(idUsuario, dni, nombreUsuario, nombreCompleto, password,
                     email);
             usuarios.put(nuevoUsuario.getId(), nuevoUsuario);
-            System.out.println("Registro exitoso. Bienvenido: " + nuevoUsuario.getNombreUsuario());
+            System.out.println("Registro exitoso.");
             GestorJSON.agregarAJson(nuevoUsuario);
         }
     }
@@ -167,7 +167,7 @@ public class GestorUsuarios {
 
         if (optionalUsuario.isPresent()) {
             Usuario usuario = optionalUsuario.get();
-            System.out.println("Logout successful. Goodbye, " + usuario.getNombreUsuario());
+            System.out.println("Sesion cerrada!, " + usuario.getNombreUsuario());
         } else {
             System.out.println("Usuario no encontrado.");
         }
