@@ -1,18 +1,20 @@
 [
   {
     "id": 1,
+    "dni": "12345678",
+    "nombreUsuario": "admin",
+    "nombre_apellido": "Administrador",
+    "password": "1234",
+    "email": "admin@mail.com",
+    "isAdmin": true
+  },
+  {
+    "id": 2,
     "dni": "41307627",
     "nombreUsuario": "sanmato",
     "nombre_apellido": "Santiago Manuel Mato",
     "password": "santi@@1234",
-    "email": "santiago.mato@email.com"
-  },
-  {
-    "id": 2,
-    "dni": "41308627",
-    "nombreUsuario": "santy368",
-    "nombre_apellido": "Santiago Manuel",
-    "password": "Santi1234@@",
-    "email": "santiago@mail.com"
+    "email": "santi@mail.com",
+    "isAdmin": false
   }
 ]

@@ -8,6 +8,7 @@ import java.util.Scanner;
 import Clases.*;
 
 public class GestorUsuarios {
+    private Usuario usuarioLogueado;
 
     private HashMap<Integer, Usuario> usuarios;
 
@@ -98,7 +99,29 @@ public class GestorUsuarios {
         if (nombreUsuarioExiste(nombreUsuario)) {
             System.out.println("El nombre de usuario ya existe. Por favor elija otro.");
         } else {
-            Usuario nuevoUsuario = new Cliente(idUsuario, dni, nombreUsuario, nombreCompleto, password, email);
+            Cliente nuevoUsuario = new Cliente(idUsuario, dni, nombreUsuario, nombreCompleto, password, email);
+            usuarios.put(nuevoUsuario.getId(), nuevoUsuario);
+            System.out.println("Registro exitoso. Bienvenido: " + nuevoUsuario.getNombreUsuario());
+            GestorJSON.agregarAJson(nuevoUsuario);
+        }
+    }
+
+    public void registroAdmin() {
+        Scanner scanner = new Scanner(System.in);
+
+        int idUsuario = generarNuevaId();
+
+        String nombreUsuario = solicitarNombreUsuario(scanner);
+        String nombreCompleto = solicitarNombreYApellido(scanner);
+        String dni = solicitarDni(scanner);
+        String password = solicitarPassword(scanner);
+        String email = solicitarCorreo(scanner);
+
+        if (nombreUsuarioExiste(nombreUsuario)) {
+            System.out.println("El nombre de usuario ya existe. Por favor elija otro.");
+        } else {
+            Administrador nuevoUsuario = new Administrador(idUsuario, dni, nombreUsuario, nombreCompleto, password,
+                    email);
             usuarios.put(nuevoUsuario.getId(), nuevoUsuario);
             System.out.println("Registro exitoso. Bienvenido: " + nuevoUsuario.getNombreUsuario());
             GestorJSON.agregarAJson(nuevoUsuario);
@@ -119,12 +142,17 @@ public class GestorUsuarios {
         if (optionalUsuario.isPresent()) {
             Usuario usuario = optionalUsuario.get();
             if (usuario.getPassword().equals(password)) {
+                usuarioLogueado = usuario;
                 System.out.println("Inicio de sesión exitoso. Bienvenido: " + usuario.getNombreUsuario());
                 return true;
             }
         }
         System.out.println("Credenciales inválidas. Por favor, verifique su nombre de usuario y clave.");
         return false;
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
     }
 
     public void logout() {

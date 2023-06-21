@@ -48,7 +48,7 @@ public class Sistema {
         GestorMenuItem menuManager = new GestorMenuItem();
         GestorMesa mesaManager = new GestorMesa();
         GestorUsuarios userManager = new GestorUsuarios();
-        ManejadorMenu manejadorMenu = new ManejadorMenu(userManager);
+        ManejadorMenu manejadorMenu = new ManejadorMenu(userManager, gestorReserva, mesaManager, menuManager);
 
         Usuario usr2 = new Cliente(6, "santm", "41307627", "Santiago Manuek", "123456", "mail@mail.com");
         // gestorReserva.agregarReserva(usr, LocalDate.now());
@@ -64,7 +64,8 @@ public class Sistema {
         // userManager.login();
 
         // menuManager.verMenu();
-        manejadorMenu.showMenu();
+        manejadorMenu.showLoginMenu();
+        // userManager.registroAdmin();
 
         scanner.close();
 

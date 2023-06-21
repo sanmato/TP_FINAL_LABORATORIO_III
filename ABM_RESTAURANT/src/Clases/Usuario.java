@@ -14,14 +14,17 @@ public class Usuario {
     private String password;
     @Expose
     private String email;
+    private Boolean isAdmin;
 
-    public Usuario(int id, String dni, String nombreUsuario, String nombre_apellido, String password, String email) {
+    public Usuario(int id, String dni, String nombreUsuario, String nombre_apellido, String password, String email,
+            Boolean isAdmin) {
         this.id = id;
         this.dni = dni;
         this.nombreUsuario = nombreUsuario;
         this.nombre_apellido = nombre_apellido;
         this.password = password;
         this.email = email;
+        this.isAdmin = isAdmin;
     }
 
     public Usuario() {
@@ -75,6 +78,14 @@ public class Usuario {
         this.email = email;
     }
 
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -99,4 +110,11 @@ public class Usuario {
         Usuario otrUsuario = (Usuario) obj;
         return nombreUsuario.equals(otrUsuario.nombreUsuario);
     }
+
+    @Override
+    public String toString() {
+        return "Usuario [id=" + id + ", dni=" + dni + ", nombreUsuario=" + nombreUsuario + ", nombre_apellido="
+                + nombre_apellido + ", password=" + password + ", email=" + email + "]";
+    }
+
 }
