@@ -194,7 +194,7 @@ public class GestorUsuarios {
         for (Usuario usuario : usuarios) {
             if (usuario.getId() == usuarioLogueado.getId()) {
                 String nuevoEmail = solicitarCorreo(scanner);
-                usuario.setPassword(nuevoEmail);
+                usuario.setEmail(nuevoEmail);
                 GestorJSON.actualizarJsonUsuarios(usuario);
                 break;
             }

@@ -25,5 +25,23 @@
     "password": "trinche@@1234",
     "email": "trinche@mail.com",
     "isAdmin": false
+  },
+  {
+    "id": 4,
+    "dni": "37388852",
+    "nombreUsuario": "maxi",
+    "nombre_apellido": "maximiliano david",
+    "password": "maxi123",
+    "email": "maximilianodcastiilo.com",
+    "isAdmin": false
+  },
+  {
+    "id": 5,
+    "dni": "41307627",
+    "nombreUsuario": "santi",
+    "nombre_apellido": "santiago mato",
+    "password": "santi@@123",
+    "email": "santi@mail.com",
+    "isAdmin": false
   }
 ]

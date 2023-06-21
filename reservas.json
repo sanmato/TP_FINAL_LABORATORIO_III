@@ -21,5 +21,20 @@
       }
     ],
     "fechaReserva": "2023-11-30"
+  },
+  {
+    "id": 2,
+    "usuario": {
+      "id": 5,
+      "dni": "41307627",
+      "nombreUsuario": "santi",
+      "nombre_apellido": "santiago mato",
+      "email": "santi@mail.com"
+    },
+    "mesa": {
+      "numeroMesa": 3,
+      "capacidad": 2
+    },
+    "fechaReserva": "2023-07-10"
   }
 ]

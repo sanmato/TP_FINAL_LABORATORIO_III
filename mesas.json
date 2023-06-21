@@ -12,11 +12,11 @@
   {
     "numeroMesa": 3,
     "capacidad": 2,
-    "reservada": false
+    "reservada": true
   },
   {
     "numeroMesa": 4,
-    "capacidad": 4,
+    "capacidad": 6,
     "reservada": false
   }
 ]
