@@ -19,7 +19,7 @@ public class Sistema {
         GestorUsuarios userManager = new GestorUsuarios();
         ManejadorMenu manejadorMenu = new ManejadorMenu(userManager, gestorReserva, mesaManager, menuManager);
 
-        manejadorMenu.showLoginMenu();
+        manejadorMenu.menuInicial();
 
         scanner.close();
 

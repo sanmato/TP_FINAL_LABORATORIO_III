@@ -21,7 +21,7 @@ public class ManejadorMenu {
         this.gestorMenuItem = gestorMenuItem;
     }
 
-    public void showLoginMenu() {
+    public void menuInicial() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -42,7 +42,7 @@ public class ManejadorMenu {
                         if (gestorUsuarios.login()) {
                             usuarioLogueado = gestorUsuarios.getUsuarioLogueado();
                             if (usuarioLogueado.getIsAdmin() == false) {
-                                showUserMenu();
+                                mostrarMenuUsuario();
                             } else {
                                 verMenuAdministrador();
                             }
@@ -66,7 +66,7 @@ public class ManejadorMenu {
         System.out.println("¡Hasta luego!");
     }
 
-    public void showUserMenu() {
+    public void mostrarMenuUsuario() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
