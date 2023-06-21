@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "id": 1,
+    "usuario": {
+      "id": 3,
+      "dni": "2342343",
+      "nombreUsuario": "trinche",
+      "nombre_apellido": "Juan Pablo Trinchero",
+      "email": "trinche@mail.com"
+    },
+    "mesa": {
+      "numeroMesa": 2,
+      "capacidad": 4
+    },
+    "orden": [
+      {
+        "tipo": "PRINCIPAL",
+        "nombre": "Ribs a la BBQ",
+        "descripcion": "Costillas de cerdo braseadas durante 6 horas con salsa BBQ de la casa.",
+        "precio": 3100.0
+      }
+    ],
+    "fechaReserva": "2023-11-30"
+  }
+]

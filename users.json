@@ -16,5 +16,14 @@
     "password": "santi@@1234",
     "email": "santi@mail.com",
     "isAdmin": false
+  },
+  {
+    "id": 3,
+    "dni": "2342343",
+    "nombreUsuario": "trinche",
+    "nombre_apellido": "Juan Pablo Trinchero",
+    "password": "trinche@@1234",
+    "email": "trinche@mail.com",
+    "isAdmin": false
   }
 ]
